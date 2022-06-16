@@ -43,7 +43,7 @@ describe('backend-express-template routes', () => {
     const resp = await request(app).delete('/movies/1');
     expect(resp.status).toBe(200);
     const { body } = await request(app).get('/movies');
-    expect(body.length).toBe(beforeDelete.length - 1);
+    expect(body.length).toBeLessThan(beforeDelete.body.length);
     pool.end();
   });
 });
