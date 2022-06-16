@@ -38,7 +38,12 @@ describe('backend-express-template routes', () => {
     expect(resp.status).toBe(200);
     expect(resp.body.title).toEqual('Ther Shershernk Redermpshern');
   });
-  afterAll(() => {
+  it('DELETE /movies/:id should delete a movie', async () => {
+    const beforeDelete = await request(app).get('/movies');
+    const resp = await request(app).delete('/movies/1');
+    expect(resp.status).toBe(200);
+    const { body } = await request(app).get('/movies');
+    expect(body.length).toBe(beforeDelete.length - 1);
     pool.end();
   });
 });
