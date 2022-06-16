@@ -26,9 +26,9 @@ describe('backend-express-template routes', () => {
         year: '2005',
         genre: 'Sci-Fi'
       });
-    expect(resp.status).toBe(201);
+    expect(resp.status).toBe(200);
     expect(resp.body.title).toEqual('Hitchhikers Guide to the Galaxy');
-    expect(resp.body.year).toEqual('2005');
+    expect(resp.body.year).toEqual(2005);
     expect(resp.body.genre).toEqual('Sci-Fi');
   });
   afterAll(() => {
