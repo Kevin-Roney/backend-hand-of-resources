@@ -18,6 +18,19 @@ describe('backend-express-template routes', () => {
     expect(resp.body.id).toBe('1');
     expect(resp.body.title).toEqual('The Shawshank Redemption');
   });
+  it('POST should create a new movie', async () => {
+    const resp = await request(app)
+      .post('/movies')
+      .send({
+        title: 'Hitchhikers Guide to the Galaxy',
+        year: '2005',
+        genre: 'Sci-Fi'
+      });
+    expect(resp.status).toBe(201);
+    expect(resp.body.title).toEqual('Hitchhikers Guide to the Galaxy');
+    expect(resp.body.year).toEqual('2005');
+    expect(resp.body.genre).toEqual('Sci-Fi');
+  });
   afterAll(() => {
     pool.end();
   });
