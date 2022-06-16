@@ -31,6 +31,13 @@ describe('backend-express-template routes', () => {
     expect(resp.body.year).toEqual(2005);
     expect(resp.body.genre).toEqual('Sci-Fi');
   });
+  it('PUT /movies/:id should update a movie', async () => {
+    const resp = await request(app)
+      .put('/movies/1')
+      .send({ title: 'Ther Shershernk Redermpshern' });
+    expect(resp.status).toBe(200);
+    expect(resp.body.title).toEqual('Ther Shershernk Redermpshern');
+  });
   afterAll(() => {
     pool.end();
   });
