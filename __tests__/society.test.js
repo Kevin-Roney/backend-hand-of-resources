@@ -18,6 +18,19 @@ describe('backend-express-template routes', () => {
     expect(resp.body.id).toBe('1');
     expect(resp.body.name).toEqual('Sumer');
   });
+  it('POST should create a new society', async () => {
+    const resp = await request(app)
+      .post('/societies')
+      .send({
+        name: 'India',
+        year: '2500 bce',
+        continent: 'Asia'
+      });
+    expect(resp.status).toBe(200);
+    expect(resp.body.name).toEqual('India');
+    expect(resp.body.year).toEqual('2500 bce');
+    expect(resp.body.continent).toEqual('Asia');
+  });
   afterAll(() => {
     pool.end();
   });
