@@ -37,6 +37,13 @@ describe('backend-express-template routes', () => {
     expect(resp.status).toBe(200);
     expect(resp.body.name).toEqual('Sloooop');
   });
+  it('DELETE /ships/:id should delete a ship', async () => {
+    const beforeDelete = await request(app).get('/ships');
+    const resp = await request(app).delete('/ships/2');
+    expect(resp.status).toBe(200);
+    const { body } = await request(app).get('/ships');
+    expect(body.length).toBeLessThan(beforeDelete.body.length);
+  });
   afterAll(() => {
     pool.end();
   });
