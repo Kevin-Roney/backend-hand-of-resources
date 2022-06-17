@@ -38,6 +38,13 @@ describe('backend-express-template routes', () => {
     expect(resp.status).toBe(200);
     expect(resp.body.name).toEqual('Vangerrrrrd');
   });
+  it('DELETE /longboards/:id should delete a longboard', async () => {
+    const beforeDelete = await request(app).get('/longboards');
+    const resp = await request(app).delete('/longboards/1');
+    expect(resp.status).toBe(200);
+    const { body } = await request(app).get('/longboards');
+    expect(body.length).toBeLessThan(beforeDelete.body.length);
+  });
   afterAll(() => {
     pool.end();
   });
