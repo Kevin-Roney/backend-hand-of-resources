@@ -19,6 +19,17 @@ describe('backend-express-template routes', () => {
     expect(resp.body.name).toEqual('Sloop');
     expect(resp.body.cannons).toEqual(2);
   });
+  it('POST should create a new ship', async () => {
+    const resp = await request(app)
+      .post('/ships')
+      .send({
+        name: 'Rowboat',
+        cannons: 1
+      });
+    expect(resp.status).toBe(200);
+    expect(resp.body.name).toEqual('Rowboat');
+    expect(resp.body.cannons).toEqual(1);
+  });
   afterAll(() => {
     pool.end();
   });
