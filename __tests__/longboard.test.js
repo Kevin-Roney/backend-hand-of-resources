@@ -7,7 +7,11 @@ describe('backend-express-template routes', () => {
   beforeEach(() => {
     return setup(pool);
   });
-  
+  it('GET should return a list of longboards', async () => {
+    const resp = await request(app).get('/longboards');
+    expect(resp.status).toBe(200);
+    expect(resp.body[0].id).toBe('1');
+  });
   afterAll(() => {
     pool.end();
   });
