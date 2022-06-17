@@ -36,6 +36,13 @@ describe('backend-express-template routes', () => {
     expect(resp.status).toBe(200);
     expect(resp.body.name).toEqual('Dragoon');
   });
+  it('DELETE /classes/:id should delete a ffxiv class', async () => {
+    const beforeDelete = await request(app).get('/classes');
+    const resp = await request(app).delete('/classes/2');
+    expect(resp.status).toBe(200);
+    const { body } = await request(app).get('/classes');
+    expect(body.length).toBeLessThan(beforeDelete.body.length);
+  });
   afterAll(() => {
     pool.end();
   });
