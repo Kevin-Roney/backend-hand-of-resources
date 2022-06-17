@@ -7,12 +7,12 @@ describe('backend-express-template routes', () => {
   beforeEach(() => {
     return setup(pool);
   });
+  it('GET should return a list of ffxiv classes', async () => {
+    const resp = await request(app).get('/classes');
+    expect(resp.status).toBe(200);
+    expect(resp.body[0].id).toBe('1');
+  });
   afterAll(() => {
-    it('GET should return a list of ffxiv classes', async () => {
-      const resp = await request(app).get('/classes');
-      expect(resp.status).toBe(200);
-      expect(resp.body[0].id).toBe('1');
-    });
     pool.end();
   });
 });
