@@ -4,6 +4,7 @@ DROP TABLE IF EXISTS movies CASCADE;
 DROP TABLE IF EXISTS longboards CASCADE;
 DROP TABLE IF EXISTS societies CASCADE;
 DROP TABLE IF EXISTS classes CASCADE;
+DROP TABLE IF EXISTS ships CASCADE;
 
 CREATE TABLE movies (
   id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
@@ -84,3 +85,17 @@ VALUES
 ('Lancer', 'DPS'),
 ('Reaper', 'DPS'),
 ('Samurai', 'DPS');
+
+CREATE TABLE ships (
+  id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+  name VARCHAR NOT NULL,
+  cannons INT NOT NULL
+);
+INSERT INTO ships (
+  name,
+  cannons
+)
+VALUES
+('Sloop', 2),
+('Galleon', 8),
+('Brig', 4);
