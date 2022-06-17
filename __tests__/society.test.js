@@ -38,6 +38,13 @@ describe('backend-express-template routes', () => {
     expect(resp.status).toBe(200);
     expect(resp.body.name).toEqual('Indus Valley');
   });
+  it('DELETE /societies/:id should delete a society', async () => {
+    const beforeDelete = await request(app).get('/societies');
+    const resp = await request(app).delete('/societies/1');
+    expect(resp.status).toBe(200);
+    const { body } = await request(app).get('/societies');
+    expect(body.length).toBeLessThan(beforeDelete.body.length);
+  });
   afterAll(() => {
     pool.end();
   });
