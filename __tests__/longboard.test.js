@@ -31,6 +31,13 @@ describe('backend-express-template routes', () => {
     expect(resp.body.brand).toEqual('Loaded');
     expect(resp.body.price).toEqual(184);
   });
+  it('PUT /longboards/:id should update a longboard', async () => {
+    const resp = await request(app)
+      .put('/longboards/1')
+      .send({ name: 'Vangerrrrrd' });
+    expect(resp.status).toBe(200);
+    expect(resp.body.name).toEqual('Vangerrrrrd');
+  });
   afterAll(() => {
     pool.end();
   });
