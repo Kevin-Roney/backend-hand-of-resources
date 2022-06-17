@@ -29,6 +29,13 @@ describe('backend-express-template routes', () => {
     expect(resp.body.name).toEqual('Dancer');
     expect(resp.body.type).toEqual('DPS');
   });
+  it('PUT /classes/:id should update a ffxiv class', async () => {
+    const resp = await request(app)
+      .put('/classes/14')
+      .send({ name: 'Dragoon' });
+    expect(resp.status).toBe(200);
+    expect(resp.body.name).toEqual('Dragoon');
+  });
   afterAll(() => {
     pool.end();
   });
