@@ -31,6 +31,13 @@ describe('backend-express-template routes', () => {
     expect(resp.body.year).toEqual('2500 bce');
     expect(resp.body.continent).toEqual('Asia');
   });
+  it('PUT /societies/:id should update a society', async () => {
+    const resp = await request(app)
+      .put('/societies/1')
+      .send({ name: 'Indus Valley' });
+    expect(resp.status).toBe(200);
+    expect(resp.body.name).toEqual('Indus Valley');
+  });
   afterAll(() => {
     pool.end();
   });
