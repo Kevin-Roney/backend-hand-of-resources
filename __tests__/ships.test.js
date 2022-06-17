@@ -30,6 +30,13 @@ describe('backend-express-template routes', () => {
     expect(resp.body.name).toEqual('Rowboat');
     expect(resp.body.cannons).toEqual(1);
   });
+  it('PUT /ships/:id should update a ship', async () => {
+    const resp = await request(app)
+      .put('/ships/1')
+      .send({ name: 'Sloooop' });
+    expect(resp.status).toBe(200);
+    expect(resp.body.name).toEqual('Sloooop');
+  });
   afterAll(() => {
     pool.end();
   });
