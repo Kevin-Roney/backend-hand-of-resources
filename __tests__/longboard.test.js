@@ -12,6 +12,12 @@ describe('backend-express-template routes', () => {
     expect(resp.status).toBe(200);
     expect(resp.body[0].id).toBe('1');
   });
+  it('GET/:id should return a single longboard', async () => {
+    const resp = await request(app).get('/longboards/1');
+    expect(resp.status).toBe(200);
+    expect(resp.body.id).toBe('1');
+    expect(resp.body.name).toEqual('Cheesegrater');
+  });
   afterAll(() => {
     pool.end();
   });
