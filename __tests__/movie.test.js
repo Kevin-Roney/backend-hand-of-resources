@@ -44,6 +44,8 @@ describe('backend-express-template routes', () => {
     expect(resp.status).toBe(200);
     const { body } = await request(app).get('/movies');
     expect(body.length).toBeLessThan(beforeDelete.body.length);
+  });
+  afterAll(() => {
     pool.end();
   });
 });
