@@ -3,6 +3,7 @@
 DROP TABLE IF EXISTS movies CASCADE;
 DROP TABLE IF EXISTS longboards CASCADE;
 DROP TABLE IF EXISTS societies CASCADE;
+DROP TABLE IF EXISTS classes CASCADE;
 
 CREATE TABLE movies (
   id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
@@ -55,3 +56,31 @@ VALUES
 ('Egypt', '3100 bce', 'Africa'),
 ('Greece', '1600 bce', 'Europe'),
 ('Rome', '753 bce', 'Europe');
+
+CREATE TABLE classes (
+  id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+  name VARCHAR NOT NULL,
+  type VARCHAR NOT NULL
+);
+INSERT INTO classes (
+  name,
+  type
+)
+VALUES
+('Warrior', 'Tank'),
+('Paladin', 'Tank'),
+('Dark Knight', 'Tank'),
+('Gunbreaker', 'Tank'),
+('White Mage', 'Healer'),
+('Astrologian', 'Healer'),
+('Sage', 'Healer'),
+('Scholar', 'Healer'),
+('Red Mage', 'DPS'),
+('Black Mage', 'DPS'),
+('Bard', 'DPS'),
+('Monk', 'DPS'),
+('Ninja', 'DPS'),
+('Dragon', 'DPS'),
+('Lancer', 'DPS'),
+('Reaper', 'DPS'),
+('Samurai', 'DPS');
