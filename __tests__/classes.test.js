@@ -18,6 +18,17 @@ describe('backend-express-template routes', () => {
     expect(resp.body.id).toBe('1');
     expect(resp.body.name).toEqual('Warrior');
   });
+  it('POST should create a new ffxiv class', async () => {
+    const resp = await request(app)
+      .post('/classes')
+      .send({
+        name: 'Dancer',
+        type: 'DPS'
+      });
+    expect(resp.status).toBe(200);
+    expect(resp.body.name).toEqual('Dancer');
+    expect(resp.body.type).toEqual('DPS');
+  });
   afterAll(() => {
     pool.end();
   });
