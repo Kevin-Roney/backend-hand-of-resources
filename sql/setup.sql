@@ -2,7 +2,7 @@
 -- The SQL in this file will be executed when you run `npm run setup-db`
 DROP TABLE IF EXISTS movies CASCADE;
 DROP TABLE IF EXISTS longboards CASCADE;
-
+DROP TABLE IF EXISTS societies CASCADE;
 
 CREATE TABLE movies (
   id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
@@ -37,3 +37,21 @@ VALUES
   ('Battle Axe', 'Landyachtz', 124.95),
   ('The Tabor', 'Eastside', 179.99),
   ('Mach 3', 'Eastside', 199.99);
+
+CREATE TABLE societies (
+  id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+  name VARCHAR NOT NULL,
+  year VARCHAR NOT NULL,
+  continent VARCHAR NOT NULL
+);
+INSERT INTO societies (
+  name,
+  year,
+  continent
+)
+VALUES
+('Sumer', '4500 bce', 'Asia'),
+('Babylon', '2300 bce', 'Asia'),
+('Egypt', '3100 bce', 'Africa'),
+('Greece', '1600 bce', 'Europe'),
+('Rome', '753 bce', 'Europe');
