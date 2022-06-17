@@ -18,6 +18,19 @@ describe('backend-express-template routes', () => {
     expect(resp.body.id).toBe('1');
     expect(resp.body.name).toEqual('Cheesegrater');
   });
+  it('POST should create a new longboard', async () => {
+    const resp = await request(app)
+      .post('/longboards')
+      .send({
+        name: 'Vanguard',
+        brand: 'Loaded',
+        price: 184
+      });
+    expect(resp.status).toBe(200);
+    expect(resp.body.name).toEqual('Vanguard');
+    expect(resp.body.brand).toEqual('Loaded');
+    expect(resp.body.price).toEqual(184);
+  });
   afterAll(() => {
     pool.end();
   });
